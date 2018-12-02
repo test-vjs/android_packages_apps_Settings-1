@@ -113,7 +113,7 @@ public class DisplaySettings extends DashboardFragment {
 
     @Override
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
-        return buildPreferenceControllers(context, getLifecycle());
+        return buildPreferenceControllers(context, getLifecycle(), this);
     }
 
     @Override
@@ -122,7 +122,7 @@ public class DisplaySettings extends DashboardFragment {
     }
 
     private static List<AbstractPreferenceController> buildPreferenceControllers(
-            Context context, Lifecycle lifecycle) {
+            Context context, Lifecycle lifecycle, Fragment fragment) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new CameraGesturePreferenceController(context));
         controllers.add(mFontPickerPreference = new FontPickerPreferenceController(context, lifecycle, fragment));
@@ -175,7 +175,7 @@ public class DisplaySettings extends DashboardFragment {
                 @Override
                 public List<AbstractPreferenceController> createPreferenceControllers(
                         Context context) {
-                    return buildPreferenceControllers(context, null);
+                    return buildPreferenceControllers(context, null, null);
                 }
             };
 }
